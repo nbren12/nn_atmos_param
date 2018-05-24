@@ -80,11 +80,10 @@ def compute_diagnostics(steps, lsf, w, dt):
     evap = lsf['LHF'] * 86400 / 2.51e6
     prec = evap - (q_nn - q_lsf)/dt
     return {
-        'QLSF':(q_lsf - q_start)/dt/86400/1000,
-        'QNN': (q_nn - q_lsf)/dt/86400/1000,
+        'QLSF': (q_lsf - q_start)/dt/86400/1000**2,
+        'QNN': (q_nn - q_lsf)/dt/86400/1000**2,
         'SLSF': 1004*(s_lsf - s_start)/dt/86400,
         'SNN': 1004*(s_nn-s_lsf)/dt/86400,
-        'Prec': prec
     }
 
 
